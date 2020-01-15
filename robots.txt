@@ -1,2 +1,4 @@
+# go away Googlebot
 User-agent: *
-Disallow: /
+Disallow: /beta
+Disallow: /_bkp_root_folder

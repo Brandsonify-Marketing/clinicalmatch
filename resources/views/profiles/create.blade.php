@@ -96,12 +96,11 @@
                                         </div>
                                         <div class="col-12 login-form-fields">
 <!--                                             <div class="upload_files"> -->
-                                                <span>Upload Profile Image: <input type="file" 
+                                                <span><label>Upload Profile Image: </label> <input type="file" 
                                                                               class="filepond"
                                                                               name="image"
                                                                               accept="image/png, image/jpeg, image/gif"/>
                                                 </span> 
-                                                <br>    
 <!--                                             </div> -->
                                         </div>
    <!--                                      <div class="image-details" id="image-details">
@@ -221,10 +220,17 @@
                                         </div>
                                         <div class="col-12 col-md-8 login-form-fields" id="upload_file" style="display:none">
                                             <div class="upload-file">
-                                              <div class="upload_files">
-                                                <span>Click here to upload your medical records <input type="file" placeholder="Click here to upload your medical records" name="file_name[]" multiple>
+<!--                                               <div class="upload_files"> -->
+                                                <span>Click here to upload your medical records 
+                                                                  <input type="file" 
+                                                                   class="filepond"
+                                                                   name="file_name[]"
+                                                                   multiple
+                                                                   data-max-file-size="3MB"
+                                                                   data-max-files="10" />
+<!--                                                   <input type="file" placeholder="Click here to upload your medical records" name="file_name[]" multiple> -->
                                                 </span> 
-                                              </div>
+<!--                                               </div> -->
                                             </div>
                                             <span>Volunteers don’t have to upload medical records</span>
                                         </div>
@@ -534,13 +540,13 @@
                                           @enderror
                                         </div>
                                         <div class="col-12 col-md-12 login-form-fields">
-                                          <div class="upload_files">
+<!--                                           <div class="upload_files"> -->
 <!--                                             <span>Upload CV: <input type="file" name="physician_cv" id="imgcv"></span> -->
                                             <span>Upload CV: <input type="file" 
                                               class="filepond"
                                               name="physician_cv"
                                               accept="image/png, image/jpeg, image/gif"/>
-                                          </div>
+<!--                                           </div> -->
                                         </div>
 <!--                                         <img id="blah_cv" hspace="10" height="150" width="200" style = "display:none"/>
                                         <label id="file-name"></label> -->
@@ -721,6 +727,7 @@
         <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
          <!-- include FilePond plugins -->
         <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js"></script>
+        <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
         <!-- include FilePond jQuery adapter -->
         <script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
           <script>
@@ -740,9 +747,11 @@
           const inputElement = document.querySelector('input[name="image"]');
           const inputElementphy = document.querySelector('input[name="physician_cv"]');
           const inputElementprin = document.querySelector('input[name="principal_cv"]');
+          const inputElementmultiple = document.querySelector('input[name="file_name[]"]');
           const pond = FilePond.create( inputElement);
           const pond_cv = FilePond.create( inputElementphy);
           const pond_prin_cv = FilePond.create( inputElementprin);
+          const pond_multiple = FilePond.create( inputElementmultiple);
           </script>
 
 <!--           <script>

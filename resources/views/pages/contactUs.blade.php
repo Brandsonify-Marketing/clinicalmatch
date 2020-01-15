@@ -130,7 +130,7 @@
                             <div class="col-12 subscBtn text-center">
                                 <button type="submit" class="btn-subscribe btn-typo" >Send Message</button>
                             </div>
-                            <span id="fld_990202Caption" class="help-block">By clicking this checkbox you are agreeing to let Clinical Match store your personal information for direct communication. You can withdraw this consent by contacting Clinical Match at any time. For more information please visit <a href="http://clinicalmatch.com/resource">http://clinicalmatch.com/resource</a> .</span>
+                            <span id="fld_990202Caption" class="help-block">By clicking this checkbox you are agreeing to let Clinical Match store your personal information for direct communication. You can withdraw this consent by contacting Clinical Match at any time. For more information please visit <a href="http://clinicalmatch.com/beta/public/resource">http://clinicalmatch.com/beta/public/resource</a> .</span>
                         </div>    
                     </form>
                 </div>

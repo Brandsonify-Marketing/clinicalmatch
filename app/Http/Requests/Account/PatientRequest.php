@@ -23,19 +23,19 @@ class PatientRequest extends FormRequest
     public function rules()
     {
         return [
-            'patient_first'=>'required',
-            'patient_last'=>'required',
-            'patient_date'=>'required',
-            'race_info'=>'required',
-            'preferred_lang'=>'required',
+            'patient_first'=>'',
+            'patient_last'=>'',
+            'patient_date'=>'',
+            'race_info'=>'',
+            'preferred_lang'=>'',
             'education_info'=>'',
             'occupation_info'=>'',
             'income_info'=>'',
-            'sex_info'=>'required',
-            'year_info'=>'required',
-            'age_info'=>'required',
-            'marital_info'=>'required',
-            'ethnicity_info'=>'required',
+            'sex_info'=>'',
+            'year_info'=>'',
+            'age_info'=>'',
+            'marital_info'=>'',
+            'ethnicity_info'=>'',
         ];
     }
     /**

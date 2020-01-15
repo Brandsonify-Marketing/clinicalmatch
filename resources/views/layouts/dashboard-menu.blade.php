@@ -324,7 +324,7 @@ $(document).ready(function () {
                 } else {
                     // The card has been verified successfully...
                     console.log('handling success', setupIntent.payment_method);
-                    axios.post('https://www.clinicalmatch.com/subscribe', {
+                    axios.post('https://www.clinicalmatch.com/beta/public/subscribe', {
                         payment_method: setupIntent.payment_method,
                         plan: plan
                     }).then((data) => {

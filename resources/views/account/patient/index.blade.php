@@ -20,19 +20,17 @@
                     <thead>
                         <tr>
                             <th>Patient Name</th>
-                            <th>Age</th>
                             <th>Gender</th>
                             <th>Ethnicity</th>
-                            <th>Education</th>
+                            <th>Race</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tr>
                         <td>{{@$profile->patient_first}} {{@$profile->patient_last}}</td>
-                        <td>{{@$profile->age_info}}</td>
                         <td>{{@$profile->sex_info}}</td>
                         <td>{{@$profile->ethnicity_info}}</td>
-                        <td>{{@$profile->education_info}}</td>
+                        <td>{{@$profile->race_info}}</td>
                         <td><a href="{{ route('account.patient.edit') }}">Update Your Patient Information</a></td>
                     </tr>
                 </table>

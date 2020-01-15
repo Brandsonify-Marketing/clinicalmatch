@@ -361,7 +361,7 @@
             </div>
             <div class="col-12 form-fields">
                 <label>Expiry Date</label>
-                <input type="text" class="expiry form-control @error('expiry_date') is-invalid @enderror" name="expiry_date" value="{{old('expiry_date') ? old('expiry_date') : ''}}" required autocomplete="expiry_date" autofocus>
+                <input type="text"  placeholder="MM-DD-YYYY" class="expiry form-control @error('expiry_date') is-invalid @enderror" name="expiry_date" value="{{old('expiry_date') ? old('expiry_date') : ''}}" required autocomplete="expiry_date" autofocus>
                 @error('expiry_date')
                 <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -648,7 +648,7 @@ $(".agree-form").click(function(){
         if(input.files[0].type =="image/png"){
       $(imgControlName).attr('src', e.target.result);
       }else{ 
-      $(imgControlName).attr('src', "http://clinicalmatch.com/images/pdf.png");
+      $(imgControlName).attr('src', "http://clinicalmatch.com/beta/public/images/pdf.png");
       }
     }
     reader.readAsDataURL(input.files[0]); }

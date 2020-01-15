@@ -40,6 +40,7 @@ class IrbRequest extends FormRequest
             'inc_criteria'=>'required',
             'exc_criteria'=>'required',
             'placebo'=>'required',
+            'email' =>'required|email',
             // 'form_irb' => 'required|mimes:jpeg,jpg,png,bmp,gif,svg,pdf|max:2000',
             'form_irb' => '',
         ];

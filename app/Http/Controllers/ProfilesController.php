@@ -68,6 +68,7 @@ class ProfilesController extends Controller {
      */
     public function store(Request $request) {
         $data = [];
+        // dd($request->all());
         if ($request->role == 2) {
             $data = $this->validate($request, [
                 'role' => 'required',

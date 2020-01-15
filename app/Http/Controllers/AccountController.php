@@ -546,15 +546,15 @@ class AccountController extends Controller {
         }
         if (Auth::user()->role_id == 7) {
             $this->validate($request, [
-                'job_title_info' => 'required|max:255',
-                'research_company' => 'required|max:255',
-                'research_brief' => 'required|max:255',
-                'research_per_name' => 'required|max:255',
-                'research_per_tele' => 'required|max:255',
-                'research_per_email' => 'required|email|max:255',
-                'research_per_address' => 'required|max:255',
-                'research_comp_tele' => 'required|max:255',
-                'research_comp_fax' => 'required|max:255',
+                'job_title_info' => '',
+                'research_company' => '',
+                'research_brief' => '',
+                'research_per_name' => '',
+                'research_per_tele' => '',
+                'research_per_email' => '',
+                'research_per_address' => '',
+                'research_comp_tele' => '',
+                'research_comp_fax' => '',
             ]);
             $profile->job_title_info = $request->get('job_title_info');
             $profile->research_company = $request->get('research_company');
@@ -569,36 +569,36 @@ class AccountController extends Controller {
 
         if (Auth::user()->role_id == 6) {
             $this->validate($request, [
-                'job_title_info' => 'required|max:255',
+                'job_title_info' => '',
                 // 'principal_specialty' => 'required|max:255',
                 'addmore.*.principal_specialty' => '',
                 'addmoresubs.*.principal_sub_specialty' => '',
                 // 'principal_sub_specialty' => 'required|max:255',
-                'principal_medical_license' => 'required|max:255',
-                'principal_medical_state' => 'required|max:255',
-                'principal_research_experience' => 'required|max:255',
-                'principal_therapeutic' => 'required|max:255',
-                'principal_sub' => 'required',
+                'principal_medical_license' => '',
+                'principal_medical_state' => '',
+                'principal_research_experience' => '',
+                'principal_therapeutic' => '',
+                'principal_sub' => '',
                 // 'principal_cv' => 'required | mimes:jpeg,jpg,png | max:2000',
                 'principal_cv' => '',
-                'principal_site_name' => 'required|max:255',
-                'principal_site_address' => 'required|max:255',
-                'principal_site_telephone' => 'required|max:255',
-                'principal_fax' => 'required|max:255',
-                'principal_person_company' => 'required|max:255',
-                'principal_email' => 'required|email|max:255',
-                'principal_telephone' => 'required|max:255',
+                'principal_site_name' => '',
+                'principal_site_address' => '',
+                'principal_site_telephone' => '',
+                'principal_fax' => '',
+                'principal_person_company' => '',
+                'principal_email' => '',
+                'principal_telephone' => '',
             ]);
-            if ($request->hasFile('principal_cv')) {
-                $filenameWithExt = $request->file('principal_cv')->getClientOriginalName();
-                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-                $extension = $request->file('principal_cv')->getClientOriginalExtension();
-                $principal = $filename . '_' . date('mdYHis') . uniqid() . '.' . $extension;
-                $path = $request->file('principal_cv')->storeAs('public/principal-cv/', $principal);
-                $data['principal_cv'] = $principal;
-            } else {
-                $principal = '';
-            }
+            // if ($request->hasFile('principal_cv')) {
+            //     $filenameWithExt = $request->file('principal_cv')->getClientOriginalName();
+            //     $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            //     $extension = $request->file('principal_cv')->getClientOriginalExtension();
+            //     $principal = $filename . '_' . date('mdYHis') . uniqid() . '.' . $extension;
+            //     $path = $request->file('principal_cv')->storeAs('public/principal-cv/', $principal);
+            //     $data['principal_cv'] = $principal;
+            // } else {
+            //     $principal = '';
+            // }
 
             $pro_add = [];
             $pro_d = $request->addmore;
@@ -627,7 +627,7 @@ class AccountController extends Controller {
             $profile->principal_research_experience = $request->get('principal_research_experience');
             $profile->principal_therapeutic = $request->get('principal_therapeutic');
             $profile->principal_sub = $request->get('principal_sub');
-            $profile->principal_cv = $principal;
+            $profile->principal_cv = $request->get('principal_cv');
             $profile->principal_site_name = $request->get('principal_site_name');
             $profile->principal_site_address = $request->get('principal_site_address');
             $profile->principal_site_telephone = $request->get('principal_site_telephone');
@@ -639,16 +639,16 @@ class AccountController extends Controller {
 
         if (Auth::user()->role_id == 5) {
             $this->validate($request, [
-                'job_title_info' => 'required|max:255',
-                'sponsor_company' => 'required|max:255',
-                'sponsor_brief' => 'required|max:255',
-                'sponsor_per_name' => 'required|max:255',
-                'sponsor_per_tele' => 'required|max:255',
-                'sponsor_per_email' => 'required|email|max:255',
-                'sponsor_per_address' => 'required|max:255',
-                'sponsor_comp_tele' => 'required|max:255',
-                'sponsor_comp_fax' => 'required |max:255',
-                'sponsor_therapeutic' => 'required|max:255',
+                'job_title_info' => '',
+                'sponsor_company' => '',
+                'sponsor_brief' => '',
+                'sponsor_per_name' => '',
+                'sponsor_per_tele' => '',
+                'sponsor_per_email' => '',
+                'sponsor_per_address' => '',
+                'sponsor_comp_tele' => '',
+                'sponsor_comp_fax' => '',
+                'sponsor_therapeutic' => '',
             ]);
             $profile->job_title_info = $request->get('job_title_info');
             $profile->sponsor_company = $request->get('sponsor_company');
@@ -665,41 +665,41 @@ class AccountController extends Controller {
 
         if (Auth::user()->role_id == 2) {
             $this->validate($request, [
-                'job_title_info' => 'required|max:255',
-                'physician_specialty' => 'required|max:255',
-                'physician_sub_specialty' => 'required|max:255',
+                'job_title_info' => '',
+                'physician_specialty' => '',
+                'physician_sub_specialty' => '',
                 // 'physician_medical_license' => 'required|max:255',
                 // 'physician_medical_state' => 'required|max:255',
                 'addmedicallicenses.*.physician_medical_license' => '',
                 'addmedicalstates.*.physician_medical_state' => '',
-                'physician_research' => 'required|max:255',
+                'physician_research' => '',
                 'physician_research_experience' => '',
                 'physician_therapeutic' => '',
-                'physician_sub' => 'required',
+                'physician_sub' => '',
                 // 'physician_cv' => 'required | mimes:jpeg,jpg,png | max:2000',
                 'physician_cv' => '',
-                'physician_clinic_info' => 'required|max:255',
-                'physician_clinic_address' => 'required|max:255',
-                'physician_clinic_tele' => 'required|max:255',
-                'physician_clinic_fax' => 'required|max:255',
-                'physician_record_storage' => 'required|max:255',
-                'clinic_person_contact' => 'required|max:255',
-                'clinic_person_email' => 'required|email|max:255',
-                'clinic_person_telephone' => 'required|max:255',
-                'clinic_database' => 'required|max:255',
-                'med_est_type' => 'required',
+                'physician_clinic_info' => '',
+                'physician_clinic_address' => '',
+                'physician_clinic_tele' => '',
+                'physician_clinic_fax' => '',
+                'physician_record_storage' => '',
+                'clinic_person_contact' => '',
+                'clinic_person_email' => '',
+                'clinic_person_telephone' => '',
+                'clinic_database' => '',
+                'med_est_type' => '',
                 'other_name' => '',
             ]);
-            if ($request->hasFile('physician_cv')) {
-                $filenameWithExt = $request->file('physician_cv')->getClientOriginalName();
-                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-                $extension = $request->file('physician_cv')->getClientOriginalExtension();
-                $physician = $filename . '_' . date('mdYHis') . uniqid() . '.' . $extension;
-                $path = $request->file('physician_cv')->storeAs('public/physician-cv/', $physician);
-                $data['physician_cv'] = $physician;
-            } else {
-                $physician = '';
-            }
+            // if ($request->hasFile('physician_cv')) {
+            //     $filenameWithExt = $request->file('physician_cv')->getClientOriginalName();
+            //     $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            //     $extension = $request->file('physician_cv')->getClientOriginalExtension();
+            //     $physician = $filename . '_' . date('mdYHis') . uniqid() . '.' . $extension;
+            //     $path = $request->file('physician_cv')->storeAs('public/physician-cv/', $physician);
+            //     $data['physician_cv'] = $physician;
+            // } else {
+            //     $physician = '';
+            // }
             $pro_sub_medicalno = [];
             $pro_d_medical = $request->addmedicallicenses;
             if ($pro_d_medical) {
@@ -729,7 +729,7 @@ class AccountController extends Controller {
             $profile->physician_research_experience = $request->get('physician_research_experience');
             $profile->physician_therapeutic = $request->get('physician_therapeutic');
             $profile->physician_sub = $request->get('physician_sub');
-            $profile->physician_cv = $physician;
+            $profile->physician_cv = $request->get('physician_cv');
             $profile->physician_clinic_info = $request->get('physician_clinic_info');
             $profile->physician_clinic_address = $request->get('physician_clinic_address');
             $profile->physician_clinic_tele = $request->get('physician_clinic_tele');
@@ -884,31 +884,25 @@ class AccountController extends Controller {
             $path = $request->file('physician_cv')->storeAs('public/physician-cv/', $physician);
             return $data['physician_cv'] = $physician;
         }
+        if($request->file('file_name')[0])
+        {          
+                $file = $request->file('image_name')[0];
+                return $file->store('medical_records'); 
+                // $medical_record = [];
+                // $image = $request->file('file_name')[0];
+                // if ($image) {
+                //     foreach ($image as $files) {
+                //         $destinationPath = storage_path('medical-records/');
+                //         $profileImage = date('YmdHis') . uniqid() . $files->getClientOriginalExtension();
+                //         $files->move($destinationPath, $profileImage);
+                //         $medical_record[] ="$profileImage";         
+                //     }
+                //     return $data['file_name'] = $medical_record;
+                // }
+        }
         else
         {
-            
+
         }
     }
-
-    // public function uploadPrincipal(Request $request) {
-    //     if($request->hasFile('principal_cv')) {  
-    //         $file = $request->file('principal_cv');
-    //         $filenameWithExt = $request->file('principal_cv')->getClientOriginalName();
-    //         $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-    //         $extension = $request->file('principal_cv')->getClientOriginalExtension();
-    //         $principal = $filename . '_' . date('mdYHis') . uniqid() . '.' . $extension;
-    //         $path = $request->file('principal_cv')->storeAs('public/principal-cv/', $principal);
-    //         return $data['principal_cv'] = $principal;
-    //     }
-    // }
-    // public function uploadPhysician(Request $request) {
-    //     $file = $request->file('physician_cv');
-    //     $filenameWithExt = $request->file('physician_cv')->getClientOriginalName();
-    //     $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-    //     $extension = $request->file('physician_cv')->getClientOriginalExtension();
-    //     $physician = $filename . '_' . date('mdYHis') . uniqid() . '.' . $extension;
-    //     $path = $request->file('physician_cv')->storeAs('public/physician-cv/', $physician);
-    //     return $data['physician_cv'] = $physician;
-    // }
-
 }

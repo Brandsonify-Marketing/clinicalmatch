@@ -105,8 +105,8 @@
                                         <!--                          @php
                                                                   $patient_names = App\User::whereIn('role_id', [2, 3,4])->orderby('id', 'DESC')->get();
                                                                   @endphp-->
-                                        <select id="patient_id" name="patient_id" class="form-control">
-                                            <option selected="selected" disabled>--Patient Name--</option> 
+                                        <select  name="patient_id" class="form-control">
+                                            <option id="patient_id" selected="selected" disabled>--Patient Name--</option> 
 
                                             <!--                                        @foreach($patient_names as $k => $patient_name)
                                             

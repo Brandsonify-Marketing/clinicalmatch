@@ -45,7 +45,8 @@
                   @if($profile->role == '6')
                   <div class="imgContainer">
                     @if(!empty($profile->principal_cv))
-                        <p><b>Principal CV:</b></p>                   
+                        <p><b>Principal Investigator CV:</b></p>  
+                        <p>{{$profile->principal_cv}}</p>                 
                         <img src="{{ url('storage/principal-cv/'.$profile->principal_cv)}}" hspace="20" height="150" width="200"/>                  
                     @endif
                   </div>

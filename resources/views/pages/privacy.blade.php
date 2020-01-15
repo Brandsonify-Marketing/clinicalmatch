@@ -5,6 +5,7 @@
 <section class="banner-inner-pg" style="background-image: url({{ asset('images/about-banner.jpg') }});">
     <div class="container wow fadeIn" data-wow-duration="2s" data-wow-delay="1s">
         <h2 class="main-head">Privacy Policy</h2>
+        <p>Vivamus pharetra vestibulum purus, vulputate ullamcorper tortor volutpat ut.</p>
     </div>
 </section>
 <section class="our-story-- wow fadeInUp">

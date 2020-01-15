@@ -23,10 +23,10 @@ class PersonalRequest extends FormRequest
     public function rules()
     {
         return [
-            'firstname'=>'required',
-            'lastname'=>'required',
-            'address' => 'required',
-            'contact' => 'required',
+            'firstname'=>'',
+            'lastname'=>'',
+            'address' => '',
+            'contact' => '',
             'email' => '',
             'image' => '',
         ];

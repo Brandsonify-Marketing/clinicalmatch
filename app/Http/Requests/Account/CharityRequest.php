@@ -23,10 +23,10 @@ class CharityRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required',
-            'address'=>'required',
-            'amount'=>'required',
-            'ach'=>'required',
+            'name'=>'',
+            'address'=>'',
+            'amount'=>'',
+            'ach'=>'',
         ];
     }
     /**

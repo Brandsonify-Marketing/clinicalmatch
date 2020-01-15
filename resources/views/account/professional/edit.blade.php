@@ -146,13 +146,22 @@
                                 @enderror
                         </div>
                         <div class="form-group">
-                          <div class="upload_files">
-                            <span>Principal CV: <input type="file" name="principal_cv" value={{ @$profile->principal_cv }}></span>
-                            @if(!empty($profile->principal_cv))
+<!--                           <div class="upload_files"> -->
+<!--                             <span>Principal CV: <input type="file" name="principal_cv" value={{ @$profile->principal_cv }}></span> -->
+                            <span>Principal CV: <input type="file" 
+                                          class="filepond"
+                                          name="principal_cv"
+                                          accept="image/png, image/jpeg, image/gif"/>
+                            </span> 
+<!--                             <p>{{@$profile->principal_cv}}</p> -->
+                            <a href="{{asset('storage/principal-cv/'.$profile->principal_cv)}}" target="_blank">
+                                {{@$profile->principal_cv}}
+                             </a>  
+<!--                             @if(!empty($profile->principal_cv))
                             <img src="{{ url('storage/principal-cv/'.$profile->principal_cv)}}" width="200px"/> 
                             @else                    
-                            @endif
-                          </div>
+                            @endif -->
+<!--                           </div> -->
                         @error('principal_cv')
                                 <span class="invalid-feedback" role="alert">
                                     <strong style="color:red">{{ $message }}</strong>
@@ -460,6 +469,32 @@
           </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
+     <!-- include FilePond plugins -->
+        <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js"></script>
+        <!-- include FilePond jQuery adapter -->
+        <script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
+          <script>
+          FilePond.registerPlugin();
+          var element = document.querySelector('meta[name="csrf-token"]');
+          var csrf = element && element.getAttribute("content");
+          FilePond.setOptions({
+            server: {
+                  url: "{{ url('account/personal/upload')}}",
+                  process: {
+                      headers: {
+                        'X-CSRF-TOKEN': csrf 
+                      },
+                  }
+              }
+          });
+          const inputElement = document.querySelector('input[name="image"]');
+          const inputElementphy = document.querySelector('input[name="physician_cv"]');
+          const inputElementprin = document.querySelector('input[name="principal_cv"]');
+          const pond = FilePond.create( inputElement);
+          const pond_cv = FilePond.create( inputElementphy);
+          const pond_prin_cv = FilePond.create( inputElementprin);
+          </script>
         <script type="text/javascript">
             function isNumberKey(txt, evt) {
 

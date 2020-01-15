@@ -23,7 +23,7 @@ class ProfessionalRequest extends FormRequest
     public function rules()
     {
         return [
-            'job_title_info'=>'required',
+            'job_title_info'=>'',
 //            'address_info' => 'required',
 //            'email' => 'required',
 //            'contact_info' => 'required',

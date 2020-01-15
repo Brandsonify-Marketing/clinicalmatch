@@ -34,6 +34,7 @@ class NonIrbRequest extends FormRequest
             'summary_exc_inc'=>'required',
             'participation'=>'required',
             'placebo'=>'required',
+            'email' =>'required|email',
         ];
     }
     /**

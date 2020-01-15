@@ -89,7 +89,7 @@
                                name="image_name[]"
                                multiple
                                data-max-file-size="3MB"
-                               data-max-files="3" />
+                               data-max-files="10" />
                           </div>
                       </div>
                   </div>

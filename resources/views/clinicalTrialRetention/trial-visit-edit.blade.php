@@ -52,7 +52,15 @@
                                 <input type="hidden" name="service_title" value="{{ setting('payment.enrollment_services_title') }}" id="service_title">
                                 <input type="hidden" name="service_cost" value="{{ setting('payment.enrollment_services_cost') }}" id="service_cost">
 
-                                <select name="clinical_id" class="form-control">
+                                @php
+                                if(Auth::user()->role_id == 8){
+                                $clinicaltrials = App\ClinicalTrial::where('status', 1)->orderby('id', 'DESC')->get();
+                                }else{
+                                $clinicaltrials = App\ClinicalTrial::where('user_id', Auth::user()->id)->where('status', 1)->orderby('id', 'DESC')->get();
+                                }
+                                @endphp
+
+                                <select name="clinical_id" class="form-control clinical_trial_select">
 
                                     @foreach($clinicaltrials as $k => $clinicaltrial)
 
@@ -75,10 +83,10 @@
                             @enderror
                            <div class="form-group">
                                 <label for="research_site_id">Research Site:</label>
-                                <select name="research_site_id" class="form-control">
-                                    @foreach($researchSites as $k => $researchSite)
+                                <select name="research_site_id" id="research_site_id" class="form-control">
+<!--                                     @foreach($researchSites as $k => $researchSite)
                                     <option value="{{ $researchSite->id }}"{{ ( $trialvisits->research_site_id==$researchSite->id ) ? ' selected' : '' }}>{{ $researchSite->address.", ".$researchSite->state.", ".$researchSite->city.", ".$researchSite->zipcode }}</option>
-                                    @endforeach
+                                    @endforeach -->
                                 </select>
                             </div>
                             @error('research_site_id')
@@ -97,15 +105,15 @@
                             @enderror
 
                             <div class="form-group">
-                            <label for="patient_id">Patient Name:</label>
-                              @php
-                              $patient_names = App\User::all();
-                              @endphp
-                                    <select name="patient_id" class="form-control">
-                                    <option selected="selected" disabled>--Patient Name--</option> 
-                                                @foreach($patient_names as $k => $patient_name)
+                         <label for="patient_id"><strong>Patient Name:</strong></label>
+                                    <!--                          @php
+                                                              $patient_names = App\User::whereIn('role_id', [2, 3,4])->orderby('id', 'DESC')->get();
+                                                              @endphp-->
+                                    <select  name="patient_id" class="form-control">
+                                        <option id="patient_id" selected="selected" disabled>--Patient Name--</option> 
+<!--                                                 @foreach($patient_names as $k => $patient_name)
                                                 <option value="{{ $patient_name->id }}"{{ ( $trialvisits->patient_id==$patient_name->id ) ? ' selected' : '' }}>{{ @$patient_name->firstname}}</option>
-                                                @endforeach
+                                                @endforeach -->
                                     </select>
                             </div>
                             @error('patient_id')
@@ -236,6 +244,51 @@
 
 @section('scripts')
 
+
+<script>
+    // GET research site and Patient on change of clinical Trial
+    $(document).on('change', '.clinical_trial_select', function () {
+        var clinicalTrialId = this.value;
+//      research_sites
+        $.ajax({
+            type: 'get',
+            url: "{{ url('clinical-trial/trial-info')}}" + '/' + clinicalTrialId,
+            success: function (data) {
+
+                if ((data.errors)) {
+                    $('.error').removeClass('hidden');
+                    $('.error').text(data.errors.message);
+                } else {
+                    var obj = JSON.parse(data)
+                    $('#research_site_id').find('option')
+                            .remove()
+                            .end();
+                    $('#patient_id').find('option')
+                            .remove()
+                            .end();
+                    $.each(obj.research_site, function (key, value) {
+                        console.log(value);
+                        $('#research_site_id')
+                                .append($("<option></option>")
+                                        .attr("value", value.id)
+                                        .text(value.address + ', ' + value.state + ', ' + value.city + ', ' + value.zipcode));
+                    });
+                    $.each(obj.patients, function (key, value) {
+                        console.log(value);
+                        $('#patient_id')
+                                .append($("<option></option>")
+                                        .attr("value", value.user_id)
+                                        .text(value.name));
+                    });
+
+//              $('.error').remove();
+//              $('#trial-details').html(data);
+                }
+            },
+        });
+
+    });
+</script>
 <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>

@@ -44,7 +44,7 @@
                         </div>
                         <div class="form-group">
                             <label for="patient_phy__email">Physician Email:</label>
-                            <input type="text" class="form-control" name="patient_phy__email" value="{{ @$profile->patient_phy__email }}">
+                            <input type="email" class="form-control" name="patient_phy__email" value="{{ @$profile->patient_phy__email }}">
                         </div>
                         <div class="form-group">
                             <label for="patient_phy__phone">Physician Phone:</label>
@@ -56,7 +56,7 @@
                         </div>
                         <div class="form-group">
                             <label for="care_giver_email">Caregiver Email:</label>
-                            <input type="text" class="form-control" name="care_giver_email" value="{{ @$profile->care_giver_email }}">
+                            <input type="email" class="form-control" name="care_giver_email" value="{{ @$profile->care_giver_email }}">
                         </div>
                         <div class="form-group">
                             <label for="care_giver_phone">Caregiver Phone:</label>

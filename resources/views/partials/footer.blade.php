@@ -7,11 +7,11 @@
                     <img src="{{ url('/storage').'/'.setting('site.footer_logo') }}" alt="logo">
                 </a>
             </div>
-            <div class="col-12 col-md-3 col-lg-3 footer-links">
+            <div class="col-12 col-md-3 col-lg-2 footer-links">
                 <h4>ABOUT</h4>
                 <ul class="p-0 m-0">{{ menu('Footer about menu','partials.footer_about') }}</ul>
             </div>
-            <div class="col-12 col-md-4 col-lg-3 footer-links">
+            <div class="col-12 col-md-4 col-lg-4 footer-links">
                 <h4>SERVICES</h4>
                 <ul class="p-0 m-0">{{ menu('Footer services menu','partials.footer_services') }}</ul>
             </div>

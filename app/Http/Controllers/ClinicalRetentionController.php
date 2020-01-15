@@ -292,7 +292,7 @@ class ClinicalRetentionController extends Controller {
             foreach ($trialVisits as $k => $trialVisit) {
 //                dd($trialVisit->patient);
                 $trial_visit_count = TrialVisitNumber::where(['clinical_id' => $trialVisit->clinical_id])->count();
-                $data[$trialVisit->patient->id . $trialVisit->clinical_id][] = '<a data-id="' . $trialVisit->id . '" href="' . route("clinicalTrialRetention.participant-info", $trialVisit->id) . '" class="submit-trial">' . @$trialVisit->patient->firstname . " " . @$trialVisit->patient->lastname . '</a>';
+                $data[@$trialVisit->patient->id . @$trialVisit->clinical_id][] = '<a data-id="' . @$trialVisit->id . '" href="' . route("clinicalTrialRetention.participant-info", @$trialVisit->id) . '" class="submit-trial">' . @$trialVisit->patient->firstname . " " . @$trialVisit->patient->lastname . '</a>';
                 $data[$trialVisit->patient->id . $trialVisit->clinical_id][] = '<a  data-id="' . $trialVisit->clinicaltrial->id . '" href="' . route("clinicalTrialRetention.trial-detail", $trialVisit->clinicaltrial->id) . '" class="submit-trial-visit">' . @$trialVisit->clinicaltrial->study_title . '</a>';
                 $complete_count = TrialVisit::where('user_id', $trialVisit->user->id)
                         ->where('patient_id', $trialVisit->patient->id)
