@@ -1,0 +1,16 @@
+.voyager .side-menu.sidebar-inverse {
+    background: #353d47;
+    background: linear-gradient(45deg,
+        #353d47 0,
+        #21292e 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#353d47', endColorstr='#21292e', GradientType=1 );
+    overflow-x: hidden;
+    transition: width .5s cubic-bezier(.19,1,.22,1);
+}
+.voyager .side-menu .navbar-header {
+    background: 
+#22A7F0;
+border-color:
+    #22A7F0;
+        border-bottom-color: rgb(34, 167, 240);
+}
